@@ -3,7 +3,7 @@ import { Cliente } from './cliente';
 import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {map,catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
