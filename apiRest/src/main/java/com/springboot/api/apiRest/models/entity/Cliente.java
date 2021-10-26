@@ -1,6 +1,9 @@
 package com.springboot.api.apiRest.models.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,11 +14,16 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     @Column(nullable = false)
     private String nombre;
+
+    @NotEmpty
     private String apellido;
 
     @Column(nullable = false,unique = true)
+    @Email
+    @NotBlank
     private String email;
 
     @Column(name = "create_at")
