@@ -1,6 +1,7 @@
 import { CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
 import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 import { Observable, of,throwError} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map,catchError} from 'rxjs/operators';
@@ -17,10 +18,17 @@ export class ClienteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getCliente(): Observable<Cliente[]>{
-    //return of(CLIENTES);
-    //return this.http.get<Cliente[]>(this.urlEndPoint);
     return this.http.get(this.urlEndPoint).pipe(
-      map( response => response as Cliente[])
+      map( response => {
+       
+       let clientes = response as Cliente[];
+       return clientes.map( cliente => {
+         cliente.nombre = cliente.nombre.toUpperCase();
+         cliente.createAt = formatDate(cliente.createAt,'dd/MM/yyyy','en-US');
+         return cliente;
+       });
+      }
+      )
     );
   }
 
