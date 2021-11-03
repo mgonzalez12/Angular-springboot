@@ -11,7 +11,14 @@ import { ClienteService } from './clientes/cliente.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
+<<<<<<< HEAD
 import { PaginatorComponent } from './paginator/paginator.component';
+=======
+import localeES from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeES,'es');
+>>>>>>> 39e05b4f75b52036a8d5dc5efe28b72d22879007
 
 @NgModule({
   declarations: [
