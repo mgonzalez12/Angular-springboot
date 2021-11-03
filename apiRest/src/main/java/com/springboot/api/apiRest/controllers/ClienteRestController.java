@@ -46,7 +46,7 @@ public class ClienteRestController {
         try{
            cliente = clienteService.findById(id);
         }catch (DataAccessException e){
-            response.put("mensaje","Error al realizar la consulta en la base de datos");
+            response.put("mensaje","Error al realizar la consulta en la base de datos..!! ");
             response.put("error",e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
             return  new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
         }
@@ -64,12 +64,6 @@ public class ClienteRestController {
         Cliente clienteNew = null;
         Map<String,Object> response = new HashMap<>();
         if (result.hasErrors()){
-           /*  Captura de Error antes de JDK 8
-            List<String> errors = new ArrayList<>();
-            for (FieldError err : result.getFieldErrors()){
-                errors.add(" El campo '"+ err.getField() +"' " +err.getDefaultMessage());
-            } */
-
             // manejo de errores
             List<String> errors = result.getFieldErrors()
                 .stream()
@@ -98,7 +92,6 @@ public class ClienteRestController {
         Cliente clienteActual = clienteService.findById(id);
         Cliente clienteUpdated = null;
         Map<String,Object> response = new HashMap<>();
-
         // manejo de errores
         List<String> errors = result.getFieldErrors()
                 .stream()
