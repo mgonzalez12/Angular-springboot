@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-directiva',
@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectivaComponent {
 
-  listaCurso: string[] = ['Typescritp','PHP','C#','Java','Mysql']
+  listaCurso: string[] = ['TypeScript', 'JavaScript', 'Java SE', 'C#', 'PHP'];
+
   habilitar: boolean = true;
+
   constructor() { }
 
-  setHabilitar():void{
-    this.habilitar = (this.habilitar == true)?false : true;
+  setHabilitar(): void {
+    this.habilitar = (this.habilitar == true) ? false : true;
   }
-
 
 }
